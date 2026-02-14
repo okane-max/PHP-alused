@@ -26,10 +26,11 @@
     </form>
     <?php
         if(!empty($_GET['arv1']) && !empty($_GET['arv2'])){
-        $nr1 = $_GET['arv1'];
-        $nr2 = $_GET['arv2'];
-        $liida = $nr1 + $nr2;
-        echo $liida;
+            $nr1 = $_GET['arv1'];
+            $nr2 = $_GET['arv2'];
+            $liida = $nr1 + $nr2;
+            echo '<div class="alert alert-primary" role="alert">
+            Vastus: '.$liida.'</div>';
         }
     ?>
 
