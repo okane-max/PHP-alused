@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="et">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,8 +33,7 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="otsi">
         <button class="btn btn-outline-success" type="submit">Otsi</button>
       </form>
-      <a href="logout.php" class="ms-4 btn btn-danger">Logi välja</a>
     </div>
   </div>
 </nav>
-</html>
+    <!-- /menüü -->

@@ -15,14 +15,14 @@
      print_r($rida);
 ?>
         <div class="col">
-            <h1><?php echo $rida["mark"]; ?> <?php echo $rida["mudel"]; ?></h1>
-            <p>Mootor:  <?php echo $rida["mootor"]; ?></p>
-            <p>Kütus:  <?php echo $rida["kütus"]; ?></p>
-            <p>Aasta:  <?= $rida["aasta"]; ?></p>
-            <p>Staatus:  <?php echo $rida["staatus"]; ?></p>
-            <p>Käigukast:  <?php echo $rida["käigukast"]; ?></p>
-            <p>Istmed:  <?php echo $rida["istmed"]; ?></p>
-            <p class="fs-5">Hind:  <?php echo $rida["hind"]; ?></p>
+            <h1><?php echo $rida["mark"]; ?> <?php echo $rida["model"]; ?></h1>
+            <p>Mootor:  <?php echo $rida["engine"]; ?></p>
+            <p>Kütus:  <?php echo $rida["fuel"]; ?></p>
+            <p>Aasta:  <?= $rida["year"]; ?></p>
+            <p>Staatus:  <?php echo $rida["status"]; ?></p>
+            <p>Käigukast:  <?php echo $rida["transmission"]; ?></p>
+            <p>Istmed:  <?php echo $rida["seats"]; ?></p>
+            <p class="fs-5">Hind:  <?php echo $rida["price"]; ?></p>
             <a href="#" class="btn btn-dark w-100">Rendi auto</a>
         </div>
         <div class="col">

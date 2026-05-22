@@ -4,19 +4,19 @@
 <?php
     // if(!empty($_GET)){
     //    $mark = $_GET['mark'];
-    //    $mudel = $_GET['mudel'];
-    //    $mootor = $_GET['mootor'];
-    //    $kütus = $_GET['kütus'];
-    //    $hind = $_GET['hind'];
+    //    $model = $_GET['model'];
+    //    $engine = $_GET['engine'];
+    //    $fuel = $_GET['fuel'];
+    //    $price = $_GET['price'];
 
-    //    $aasta = $_GET['aasta'];
+    //    $year = $_GET['year'];
     //    $transmission = $_GET['transmission'];
-    //    $istmed = $_GET['istmed'];
-    //    $kirjeldus = $_GET['kirjeldus'];
-    //    $staatus = $_GET['staatus'];
+    //    $seats = $_GET['seats'];
+    //    $description = $_GET['description'];
+    //    $status = $_GET['status'];
 
 
-    //    $sql = "INSERT INTO cars (mark, mudel, mootor, kütus, hind, aasta, transmission, istmed, kirjeldus, staatus) VALUES ('".$mark."', '".$mudel."', '".$mootor."', '".$kütus."', '".$hind."', '".$aasta."', '".$transmission."', '".$istmed."', '".$kirjeldus."', '".$staatus."')";
+    //    $sql = "INSERT INTO cars (mark, model, engine, fuel, price, year, transmission, seats, description, status) VALUES ('".$mark."', '".$model."', '".$engine."', '".$fuel."', '".$price."', '".$year."', '".$transmission."', '".$seats."', '".$description."', '".$status."')";
 
     //    $valjund = mysqli_query($yhendus, $sql); 
     //    $tulemus = mysqli_affected_rows($yhendus);
@@ -44,18 +44,18 @@
       if(isset($_GET["updateid"])){
         $id = $_GET["updateid"];
         $mark = $_GET['mark'];
-        $mudel = $_GET['mudel'];
-        $mootor = $_GET['mootor'];
-        $kütus = $_GET['kütus'];
-        $hind = $_GET['hind'];
+        $model = $_GET['model'];
+        $engine = $_GET['engine'];
+        $fuel = $_GET['fuel'];
+        $price = $_GET['price'];
 
-        $aasta = $_GET['aasta'];
+        $year = $_GET['year'];
         $transmission = $_GET['transmission'];
-        $istmed = $_GET['istmed'];
-        $kirjeldus = $_GET['kirjeldus'];
-        $staatus = $_GET['staatus'];
+        $seats = $_GET['seats'];
+        $description = $_GET['description'];
+        $status = $_GET['status'];
 
-        $paring = "UPDATE cars SET mark = '".$mark."', mudel = '".$mudel."', mootor = '".$mootor."', kütus = '".$kütus."', hind = '".$hind."', aasta = '".$aasta."', transmission = '".$transmission."', istmed = '".$istmed."', kirjeldus = '".$kirjeldus."', staatus = '".$staatus."' WHERE cars.id = ".$id."";
+        $paring = "UPDATE cars SET mark = '".$mark."', model = '".$model."', engine = '".$engine."', fuel = '".$fuel."', price = '".$price."', year = '".$year."', transmission = '".$transmission."', seats = '".$seats."', description = '".$description."', status = '".$status."' WHERE cars.id = ".$id."";
 
         // print_r($paring);
 
@@ -84,26 +84,26 @@
 
                 <label for="mark" class="form-label">Mark</label>
                 <input type="text" class="form-control" id="mark" name="mark" value="<?= $rida['mark']; ?>">
-                <label for="mudel" class="form-label">mudel</label>
-                <input type="text" class="form-control" id="mudel" name="mudel" value="<?= $rida['mudel']; ?>">
-                <label for="mootor" class="form-label">Mootor</label>
-                <input type="text" class="form-control" id="mootor" name="mootor" value="<?= $rida['mootor']; ?>">
-                <label for="kütus" class="form-label">Kütus</label>
-                <input type="text" class="form-control" id="kütus" name="kütus" value="<?= $rida['kütus']; ?>">
-                <label for="hind" class="form-label">Hind</label>
-                <input type="number" class="form-control" id="hind" name="hind" value="<?= $rida['hind']; ?>">
+                <label for="model" class="form-label">Model</label>
+                <input type="text" class="form-control" id="model" name="model" value="<?= $rida['model']; ?>">
+                <label for="engine" class="form-label">Mootor</label>
+                <input type="text" class="form-control" id="engine" name="engine" value="<?= $rida['engine']; ?>">
+                <label for="fuel" class="form-label">Kütus</label>
+                <input type="text" class="form-control" id="fuel" name="fuel" value="<?= $rida['fuel']; ?>">
+                <label for="price" class="form-label">Hind</label>
+                <input type="number" class="form-control" id="price" name="price" value="<?= $rida['price']; ?>">
             </div>
             <div class="col-sm-6">
-                <label for="aasta" class="form-label">Aasta</label>
-                <input type="number" class="form-control" id="aasta" name="aasta" value="<?= $rida['aasta']; ?>">
+                <label for="year" class="form-label">Aasta</label>
+                <input type="number" class="form-control" id="year" name="year" value="<?= $rida['year']; ?>">
                 <label for="transmission" class="form-label">Käigukast</label>
                 <input type="text" class="form-control" id="transmission" name="transmission" value="<?= $rida['transmission']; ?>">
-                <label for="istmed" class="form-label">Istmete arv</label>
-                <input type="number" class="form-control" id="istmed" name="istmed" value="<?= $rida['istmed']; ?>">
-                <label for="kirjeldus" class="form-label">Muu info</label>
-                <input type="text" class="form-control" id="kirjeldus" name="kirjeldus" value="<?= $rida['kirjeldus']; ?>">
-                <label for="staatus" class="form-label">Olek</label>
-                <input type="text" class="form-control" id="staatus" name="staatus" value="<?= $rida['staatus']; ?>">
+                <label for="seats" class="form-label">Istmete arv</label>
+                <input type="number" class="form-control" id="seats" name="seats" value="<?= $rida['seats']; ?>">
+                <label for="description" class="form-label">Muu info</label>
+                <input type="text" class="form-control" id="description" name="description" value="<?= $rida['description']; ?>">
+                <label for="status" class="form-label">Olek</label>
+                <input type="text" class="form-control" id="status" name="status" value="<?= $rida['status']; ?>">
             </div>
             <input type="submit" value="Salvesta" class="btn btn-success">
         </div>

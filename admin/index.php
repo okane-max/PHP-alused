@@ -1,13 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['tuvastamine'])) {
-  header('Location: login.php');
-  exit();
-  }
-
-?>
-
 <?php include('../config.php'); ?>
 <?php include('../header.php'); ?>
 
@@ -64,16 +54,16 @@ if (!isset($_SESSION['tuvastamine'])) {
     <tr>
       <th scope="row"><?php echo $rida["id"]; ?></th>
       <td><?php echo $rida["mark"]; ?></td>
-      <td><?php echo $rida["mudel"]; ?></td>
-      <td><?php echo $rida["hind"]; ?></td>
-      <td><?php echo $rida["hind"]; ?></td>
-      <td><?php echo $rida["hind"]; ?></td>
-      <td><?php echo $rida["hind"]; ?></td>
-      <td><?php echo $rida["hind"]; ?></td>
-      <td><?php echo $rida["hind"]; ?></td>
-      <td><?php echo $rida["hind"]; ?></td>
-      <td><?php echo $rida["hind"]; ?></td>
-      <td><?php echo $rida["hind"]; ?></td>
+      <td><?php echo $rida["model"]; ?></td>
+      <td><?php echo $rida["price"]; ?></td>
+      <td><?php echo $rida["price"]; ?></td>
+      <td><?php echo $rida["price"]; ?></td>
+      <td><?php echo $rida["price"]; ?></td>
+      <td><?php echo $rida["price"]; ?></td>
+      <td><?php echo $rida["price"]; ?></td>
+      <td><?php echo $rida["price"]; ?></td>
+      <td><?php echo $rida["price"]; ?></td>
+      <td><?php echo $rida["price"]; ?></td>
       <td><a href="kustuta.php?delid=<?= $rida["id"]; ?>" class="btn btn-danger">Kustuta</a></td>
       <td><a href="muuda.php?editid=<?= $rida["id"]; ?>" class="btn btn-warning">Muuda</a></td>
     </tr>
