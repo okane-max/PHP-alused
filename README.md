@@ -1,7 +1,7 @@
 # Iseseisev töö nr3
 
 ## Paigaldusjuhend
-1. Võta ette mingi Ubuntu Linux masin.
+1. Võta ette mingi Ubuntu Server LTS masin. Näiteks `22.04` LTS või `24.04` LTS.
 2. Lae alla Apache ja Docker. `apt install apache2 -y` `apt install docker.io && apt install docker-compose-v2 -y`
 3. Vabasta port `:80` apache teenuse käest. `systemctl stop apache2` ja `systemctl disable apache2`
 4. Liigu veebiserveri juurkausta `cd /var/www/html`
