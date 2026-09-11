@@ -1,40 +1,32 @@
 services:
   db:
-    image: mariadb:10.11
+    image: mysql:8.0
     container_name: autorent_db
-    restart: always
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: Par00l
       MYSQL_DATABASE: autorent
-      MYSQL_USER: okane
-      MYSQL_PASSWORD: okane
     volumes:
-      - db_data:/var/lib/mysql
-      # Automaatne andmebaasi algseadistamine tehtud dumperist:
-      - ./db/autorent_uuendatud.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db:/docker-entrypoint-initdb.d
 
   web:
     build: .
     container_name: autorent_web
-    restart: always
     ports:
       - "80:80"
     volumes:
       - .:/var/www/html
-    command: sh -c "docker-php-ext-install mysqli && apache2-foreground"
     depends_on:
       - db
 
   phpmyadmin:
     image: phpmyadmin:latest
     container_name: autorent_pma
-    restart: always
     ports:
       - "8080:80"
     environment:
       PMA_HOST: db
-      PMA_USER: root
-      PMA_PASSWORD: Par00l
     depends_on:
       - db
 
