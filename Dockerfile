@@ -10,4 +10,4 @@ RUN a2enmod rewrite
 COPY . /var/www/html/
 
 # Määrame õigused Apache kasutajale
-RUN chown -W www-data:www-data /var/www/html/
+RUN chown -R www-data:www-data /var/www/html/
