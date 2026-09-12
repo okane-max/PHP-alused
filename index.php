@@ -61,9 +61,9 @@ $cars = $pdo->query("SELECT * FROM cars")->fetchAll();
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm border-0">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold text-dark mb-1"><?= sanitize($car['brand']) ?></h5>
-                    <p class="text-muted mb-3"><?= sanitize($car['model']) ?></p>
-                    <h4 class="text-primary fw-bold mb-4"><?= sanitize($car['price_per_day']) ?>€ <small class="text-muted fs-6">/ päev</small></h4>
+                    <h5 class="card-title fw-bold text-dark mb-1"><?= sanitize($car['mark']) ?></h5>
+                    <p class="text-muted mb-3"><?= sanitize($car['mudel']) ?></p>
+                    <h4 class="text-primary fw-bold mb-4"><?= sanitize($car['hind']) ?>€ <small class="text-muted fs-6">/ päev</small></h4>
                     
                     <form method="POST" action="" class="mt-auto">
                         <input type="hidden" name="car_id" value="<?= $car['id'] ?>">
