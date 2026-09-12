@@ -60,6 +60,7 @@ $cars = $pdo->query("SELECT * FROM cars")->fetchAll();
     <?php foreach ($cars as $car): ?>
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm border-0">
+                <img src="https://loremflickr.com/400/250/<?php echo str_replace(" ","", $car["mark"]); ?>" class="card-img-top" alt="<?php echo $car["mark"]; ?>">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title fw-bold text-dark mb-1"><?= sanitize($car['mark']) ?></h5>
                     <p class="text-muted mb-3"><?= sanitize($car['mudel']) ?></p>
