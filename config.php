@@ -1,29 +1,15 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+    // Sinu andmed
+    $db_server = 'db';
+    $db_andmebaas = 'autorent';
+    $db_kasutaja = 'okane';
+    $db_salasona = 'okane';
 
-$host = 'db'; 
-$db   = 'autorent';
-$user = 'root';
-$pass = 'Par00l';
-$charset = 'utf8mb4';
+    // Ühendus andmebaasiga
+    $yhendus = mysqli_connect($db_server, $db_kasutaja, $db_salasona, $db_andmebaas);
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
-try {
-     $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-     die("Andmebaasi viga: " . $e->getMessage());
-}
-
-// Turvalisus: XSS puhastusfunktsioon väljunditele
-function sanitize($data) {
-    return htmlspecialchars(trim($data ?? ''), ENT_QUOTES, 'UTF-8');
-}
+    // Ühenduse kontroll
+    if (!$yhendus) {
+        die('Ei saa ühendust andmebaasiga');
+    }
 ?>
