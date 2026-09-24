@@ -38,17 +38,17 @@
     }
 ?>
     <div class="container">
-        <div class="row">
+        <div class="row pt-4 mt-4">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <form method="post" action="login.php">
+                <form method="post" action="login.php" autocomplete="off">
                     <div class="mb-3">
                         <label for="u" class="form-label">Username</label>
                         <input name="user" type="text" class="form-control" id="u">
                     </div>
                     <div class="mb-3">
                         <label for="p" class="form-label">Password</label>
-                        <input name="password" type="password" class="form-control" id="p">
+                        <input name="password" type="password" class="form-control" id="p" >
                     </div>
                     <button type="submit" class="btn btn-primary">Logi sisse</button>
                 </form>
@@ -57,19 +57,9 @@
             <div class="col-sm-4"></div>
         </div>
     </div>
+  
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-
-            </div>
-            <div class="col-sm-4"></div>
-        </div>
-    </div>
-</div>
