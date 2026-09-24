@@ -22,11 +22,11 @@
         <div class="card">
         <img src="https://loremflickr.com/400/250/<?php echo str_replace(" ","", $rida["mark"]); ?>" class="card-img-top" alt="<?php echo $rida["mark"]; ?>">
         <div class="card-body">
-            <h5 class="card-title"><?php echo $rida["mark"]; ?> <?php echo $rida["mudel"]; ?></h5>
+            <h5 class="card-title"><?php echo $rida["mark"]; ?> <?php echo $rida["model"]; ?></h5>
             <p class="card-text">
-                Mootor: <?php echo $rida["mootor"]; ?> <br>
-                Kütus: <?php echo $rida["kütus"]; ?><br>
-                Hind: <?php echo $rida["hind"]; ?>€/päev<br>
+                Mootor: <?php echo $rida["engine"]; ?> <br>
+                Kütus: <?php echo $rida["fuel"]; ?><br>
+                Hind: <?php echo $rida["price"]; ?>€/päev<br>
             </p>
             <a href="single_car.php?id=<?php echo $rida["id"]; ?>" class="btn btn-dark w-100">Rendi</a>
         </div>
