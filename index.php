@@ -20,7 +20,7 @@
 ?>
     <div class="col">
         <div class="card">
-        <img src="https://loremflickr.com/400/250/<?php echo str_replace(" ","", $rida["mark"]); ?>" class="card-img-top" alt="<?php echo $rida["mark"]; ?>">
+        <img src="https://picsum.photos<?php echo $id; ?>" class="card-img-top" alt="<?php echo $mark; ?>">
         <div class="card-body">
             <h5 class="card-title"><?php echo $rida["mark"]; ?> <?php echo $rida["model"]; ?></h5>
             <p class="card-text">
