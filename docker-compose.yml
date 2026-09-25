@@ -21,15 +21,7 @@ services:
       - "80:80"
     volumes:
       - .:/var/www/html
-    command: >
-      sh -c "
-      if [ ! -f /var/www/html/bootstrap.min.css ]; then
-        wget -q https://jsdelivr.net -O /var/www/html/bootstrap.min.css;
-      fi && 
-      if [ ! -f /var/www/html/bootstrap.bundle.min.js ]; then
-        wget -q https://jsdelivr.net -O /var/www/html/bootstrap.bundle.min.js;
-      fi && 
-      apache2-foreground"
+    command: apache2-foreground
     depends_on:
       - db
 
