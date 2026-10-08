@@ -1,6 +1,6 @@
 # AutoRent Pro - Car Rental Management System
 
-A bootleg car rental platform built with PHP, Bootstrap 5, and MariaDB. Features user registration, car browsing with filters, booking system, and admin panel for reservation management.
+A scuffed car rental platform built with PHP, Bootstrap 5, and MariaDB. Features user registration, car browsing with filters, booking system, and admin panel for reservation management.
 
 ---
 
