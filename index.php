@@ -20,7 +20,24 @@
 ?>
     <div class="col">
         <div class="card">
-        <img src="https://loremflickr.com/400/250/<?php echo str_replace(" ","", $rida["mark"]); ?>" class="card-img-top" alt="<?php echo $rida["mark"]; ?>">
+        <?php
+            $imgSrc = '';
+            if (!empty($rida['image'])) {
+                $img = $rida['image'];
+                if (filter_var($img, FILTER_VALIDATE_URL)) {
+                    $imgSrc = $img;
+                } else {
+                    $local = ltrim($img, '/');
+                    if (file_exists($local)) {
+                        $imgSrc = $local;
+                    }
+                }
+            }
+            if (empty($imgSrc)) {
+                $imgSrc = 'https://loremflickr.com/400/250/' . urlencode(str_replace(' ', '', $rida['mark']));
+            }
+        ?>
+        <img src="<?php echo $imgSrc; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($rida['mark'], ENT_QUOTES, 'UTF-8'); ?>">
         <div class="card-body">
             <h5 class="card-title"><?php echo $rida["mark"]; ?> <?php echo $rida["model"]; ?></h5>
             <p class="card-text">

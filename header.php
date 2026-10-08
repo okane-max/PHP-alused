@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoRent</title>
-    <!-- Bootstrap 5 CSS (PARANDATUD TÄIELIK LINK) -->
-    <link href="https://jsdelivr.net" rel="stylesheet">
+    <!-- Bootstrap 5 CSS (from CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 shadow-sm">
