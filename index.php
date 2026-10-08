@@ -94,7 +94,7 @@
         <?php while($rida = mysqli_fetch_assoc($valjund)): ?>
             <div class="col">
                 <div class="card">
-                <img src="https://loremflickr.com/400/250/<?php echo str_replace(" ","", $rida["mark"]); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($rida["mark"], ENT_QUOTES, 'UTF-8'); ?>">
+                <img src="https://placehold.co/800x500/1f2937/f8fafc?text=<?php echo rawurlencode($rida["mark"] . ' ' . $rida["model"]); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($rida["mark"], ENT_QUOTES, 'UTF-8'); ?>">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo htmlspecialchars($rida["mark"] . ' ' . $rida["model"], ENT_QUOTES, 'UTF-8'); ?></h5>
                     <p class="card-text">

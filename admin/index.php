@@ -81,9 +81,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 }
 
-// Fetch cars list
-$cars_q = 'SELECT id, mark, model, engine, fuel, price, image, year, transmission, seats, description, status FROM cars ORDER BY id DESC';
+// Fetch cars list with filtering
+$cars_q = 'SELECT id, mark, model, engine, fuel, price, image, year, transmission, seats, description, status FROM cars WHERE 1=1';
+
+// Filter by mark
+if (!empty($_GET["mark"])) {
+    $mark = mysqli_real_escape_string($yhendus, $_GET["mark"]);
+    $cars_q .= " AND mark LIKE '%".$mark."%'";
+}
+
+// Filter by model
+if (!empty($_GET["model"])) {
+    $model = mysqli_real_escape_string($yhendus, $_GET["model"]);
+    $cars_q .= " AND model LIKE '%".$model."%'";
+}
+
+// Filter by fuel
+if (!empty($_GET["fuel"])) {
+    $fuel = mysqli_real_escape_string($yhendus, $_GET["fuel"]);
+    $cars_q .= " AND LOWER(fuel) LIKE LOWER('%".$fuel."%')";
+}
+
+// Filter by engine
+if (!empty($_GET["engine"])) {
+    $engine = mysqli_real_escape_string($yhendus, $_GET["engine"]);
+    $cars_q .= " AND engine LIKE '%".$engine."%'";
+}
+
+// Filter by max price
+if (!empty($_GET["max_price"])) {
+    $max_price = floatval($_GET["max_price"]);
+    $cars_q .= " AND price <= ".$max_price;
+}
+
+// Filter by status
+if (!empty($_GET["status"]) && $_GET["status"] !== 'all') {
+    $status = mysqli_real_escape_string($yhendus, $_GET["status"]);
+    $cars_q .= " AND status = '".$status."'";
+}
+
+$cars_q .= ' ORDER BY id DESC';
 $cars_res = mysqli_query($yhendus, $cars_q);
+$cars_count = mysqli_num_rows($cars_res);
 ?>
 <!doctype html>
 <html lang="et">
@@ -115,6 +154,62 @@ $cars_res = mysqli_query($yhendus, $cars_q);
     <h2>Autod</h2>
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">+ Lisa auto</button>
   </div>
+
+  <!-- Filter Form -->
+  <div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+      <h5 class="mb-0">Filtreeri autosid</h5>
+    </div>
+    <div class="card-body">
+      <form method="GET" action="index.php">
+        <div class="row g-3">
+          <div class="col-md-2">
+            <label class="form-label">Mark</label>
+            <input type="text" name="mark" class="form-control" value="<?php echo htmlspecialchars($_GET['mark'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="nt Audi">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Mudel</label>
+            <input type="text" name="model" class="form-control" value="<?php echo htmlspecialchars($_GET['model'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="nt A4">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Kütus</label>
+            <select name="fuel" class="form-select">
+              <option value="">Kõik</option>
+              <option value="bensiin" <?php echo ($_GET['fuel'] ?? '') === 'bensiin' ? 'selected' : ''; ?>>Bensiin</option>
+              <option value="diesel" <?php echo ($_GET['fuel'] ?? '') === 'diesel' ? 'selected' : ''; ?>>Diisel</option>
+              <option value="hybrid" <?php echo ($_GET['fuel'] ?? '') === 'hybrid' ? 'selected' : ''; ?>>Hübriid</option>
+              <option value="electric" <?php echo ($_GET['fuel'] ?? '') === 'electric' ? 'selected' : ''; ?>>Elekter</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Mootor</label>
+            <input type="text" name="engine" class="form-control" value="<?php echo htmlspecialchars($_GET['engine'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="nt V6">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Max hind (€)</label>
+            <input type="number" name="max_price" class="form-control" value="<?php echo htmlspecialchars($_GET['max_price'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="nt 500">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Staatus</label>
+            <select name="status" class="form-select">
+              <option value="">Kõik</option>
+              <option value="vaba" <?php echo ($_GET['status'] ?? '') === 'vaba' ? 'selected' : ''; ?>>Vaba</option>
+              <option value="rendidud" <?php echo ($_GET['status'] ?? '') === 'rendidud' ? 'selected' : ''; ?>>Rendidud</option>
+              <option value="hoolduses" <?php echo ($_GET['status'] ?? '') === 'hoolduses' ? 'selected' : ''; ?>>Hoolduses</option>
+            </select>
+          </div>
+          <div class="col-md-12 d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Otsi</button>
+            <a href="index.php" class="btn btn-outline-secondary">Tühista filtrid</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <?php if (!empty($_GET) && array_filter($_GET)): ?>
+    <p class="text-muted mb-3">Leiti <?php echo $cars_count; ?> autot</p>
+  <?php endif; ?>
 
   <div class="card shadow-sm">
     <div class="card-body p-0">

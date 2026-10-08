@@ -146,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['rent_car'])) {
     <div class="row bg-white p-4 rounded shadow-sm">
         <!-- Auto pilt ja detailid -->
         <div class="col-md-6">
-            <img src="https://loremflickr.com<?php echo str_replace(" ", "", $car['mark']); ?>" class="img-fluid rounded shadow-sm mb-3" alt="<?php echo htmlspecialchars($car['mark'], ENT_QUOTES, 'UTF-8'); ?>">
+            <img src="https://placehold.co/800x500/1f2937/f8fafc?text=<?php echo rawurlencode($car['mark'] . ' ' . $car['model']); ?>" class="img-fluid rounded shadow-sm mb-3" alt="<?php echo htmlspecialchars($car['mark'], ENT_QUOTES, 'UTF-8'); ?>">
             <h2><?php echo htmlspecialchars($car['mark'] . ' ' . $car['model'], ENT_QUOTES, 'UTF-8'); ?></h2>
             <hr>
             <p><strong>Tehnilised andmed:</strong></p>
