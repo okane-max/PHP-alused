@@ -1047,9 +1047,7 @@ INSERT INTO `cars` VALUES
 (999,'Jeep','Wrangler','Rotary','diesel',115,'http://dummyimage.com/179x167.png/cc0000/ffffff',1995,'semiauto',3,'','rendidud'),
 (1000,'Ford','Taurus','Diesel','electric',59,'http://dummyimage.com/236x231.png/ff4444/ffffff',2012,'manual',3,'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.','hoolduses'),
 (1001,'Audi','Coupe GT','Inline-6','electric',84,'http://dummyimage.com/117x212.png/5fa2dd/ffffff',0000,'',0,'0',''),
-(1002,'suva','esimene','v8','bensiin',200,'pilt.jpg',0000,'',0,'',''),
-(1003,'SAEF','sdf','dfg','sdfg',200,'sdgf',2000,'dsfg',5,'zdfgb','vaba'),
-(1004,'SAEF','sdf','dfg','sdfg',200,'sdgf',2000,'dsfg',5,'zdfgb','vaba');
+(1002,'suva','esimene','v8','bensiin',200,'pilt.jpg',2100,'manual',0,'1 million miles away','vaba');
 /*!40000 ALTER TABLE `cars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1082,7 +1080,8 @@ LOCK TABLES `reservations` WRITE;
 /*!40000 ALTER TABLE `reservations` DISABLE KEYS */;
 INSERT INTO `reservations` VALUES
 (1,1,3,'2026-06-01','2026-06-05',120.00,'confirmed'),
-(2,2,5,'2026-06-10','2026-06-12',70.00,'pending');
+(2,1,5,'2026-06-10','2026-06-12',70.00,'pending'),
+(3,2,7,'2026-10-08','2030-12-31',236538.00,'pending');
 /*!40000 ALTER TABLE `reservations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1112,8 +1111,9 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES
-(1,'peeter_pakiraam','$2y$10$E2dfIzvx..','peeter@auto.ee','2026-05-22 12:58:15'),
-(2,'anna_auto','$2y$10$E2dfIzvx..','anna@auto.ee','2026-05-22 12:58:15');
+(1,'okane','$2y$10$T/MnxRlF.yaEOFKWG1GSsOOsGy.enL/41TH2LPIkDW2p.4EoK66sW','okane@lahe.jahe','admin','2026-10-08 21:55:39'),
+(2,'peeter_pakiraam','$2y$10$Nwu//s0PFk9T80BIHj9u2u7A5fJybj.ttTfY6VGrMPTEOMhorxZvi','peeter@auto.ee','client','2026-05-22 12:58:15');
+
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

@@ -11,7 +11,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       # Automaatne andmebaasi algseadistamine tehtud dumperist:
-      - ./db/autorent_uuendatud.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/autorent.sql:/docker-entrypoint-initdb.d/init.sql
 
   web:
     build: .
