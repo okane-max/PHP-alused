@@ -1,192 +1,183 @@
-# AutoRent Pro - Car Rental Management System
+# AutoRent Pro - Autorendi haldussüsteem
 
-A scuffed car rental platform built with PHP, Bootstrap 5, and MariaDB. Features user registration, car browsing with filters, booking system, and admin panel for reservation management.
-
----
-
-## Features
-
-### 🚗 User Features
-- **User Authentication**: Register and login with email/username
-- **Browse Cars**: View all available cars with details (mark, model, engine, fuel, price)
-- **Advanced Filtering**: Filter cars by brand, model, fuel type, engine, and max price per day
-- **Car Booking**: Reserve cars with date selection and overlap prevention
-- **My Reservations**: View active bookings with status tracking
-- **Reservation Status**: Track pending (awaiting admin approval) and confirmed bookings
-
-### 👨‍💼 Admin Features
-- **Admin Panel**: Secure access for administrators only
-- **Car Management**: Add, edit, delete cars in the fleet
-- **Reservation Management**: Tabbed interface to view and manage reservations by status
-- **Approval Workflow**: Approve pending reservations or cancel any booking
-- **Visual Dashboard**: Color-coded reservation cards (pending/confirmed/cancelled)
-
-### 🔒 Security
-- Prepared statements for SQL injection prevention
-- Password hashing with `password_hash()`
-- Session-based authentication with role-based access control
-- Atomic transactions with row locking for concurrent booking safety
+Lihtne autorendi platvorm, mis on ehitatud kasutades PHP-d, Bootstrap 5 ja MariaDB-d. Sisaldab kasutajate registreerimist, filtritega autofunktsiooni sirvimist, broneerimissüsteemi ja administraatori paneeli broneeringute haldamiseks.
 
 ---
 
-## Tech Stack
-- **Backend**: PHP 8.2 with Apache
-- **Database**: MariaDB 10.11
-- **Frontend**: Bootstrap 5.3.8, vanilla JavaScript
-- **Containerization**: Docker & Docker Compose
-- **Database Management**: phpMyAdmin
+## Funktsioonid
+
+### 🚗 Kasutaja funktsioonid
+- **Kasutaja autentimine**: Registreerumine ja sisselogimine e-posti/kasutajanimega
+- **Autode sirvimine**: Kõikide saadaval olevate autode vaatamine koos üksikasjadega (mark, mudel, mootor, kütus, hind)
+- **Täpsem filtreerimine**: Autode filtreerimine brändi, mudeli, kütusetüübi, mootori ja maksimaalse päevahinna järgi
+- **Auto broneerimine**: Autode reserveerimine koos kuupäeva valikuga ja kattuvuste ennetamisega
+- **Minu broneeringud**: Aktiivsete broneeringute vaatamine koos staatuse jälgimisega
+- **Broneeringu staatus**: Ootel (administraatori heakskiitu ootavate) ja kinnitatud broneeringute jälgimine
+
+### 👨‍💼 Administraatori funktsioonid
+- **Admini paneel**: Turvaline juurdepääs ainult administraatorile
+- **Autode haldamine**: Autode lisamine, muutmine ja kustutamine autode andmebaasis
+- **Broneeringute haldamine**: akkidega liides broneeringute vaatamiseks ja haldamiseks staatuse järgi
+- **Broneeringute vastuvõtt**: Ootel broneeringute kinnitamine või mis tahes broneeringu tühistamine
+- **Visuaalne töölaud**: Värvikoodidega broneeringukaardid (pending/confirmed/cancelled)
+
+### 🔒 Turvalisus
+- Ettevalmistatud päringud (prepared statements) SQL-süsteemi rünnete (SQL injection) vältimiseks
+- Paroolide räsimine funktsiooniga `password_hash()`
+- Sessioonipõhine autentimine koos rollipõhise juurdepääsu kontrolliga
+- Aatomilised transaktsioonid koos ridade lukustamisega samaaegsete broneeringute turvalisuse tagamiseks
 
 ---
 
-## Installation & Setup
+## Paigaldamine ja seadistamine
 
-### Option 1: Docker (Recommended for Linux/Ubuntu)
+### Variant 1: Docker (Soovitatav Linux/Ubuntu puhul)
 
-1. **Install Docker & Docker Compose**
+1. **Paigalda Docker & Docker Compose**
    ```bash
    apt install docker.io -y
    apt install docker-compose-v2 -y
    ```
 
-2. **Clone the repository**
+2. **Klooni hoidla (repository)**
    ```bash
    cd /var/www/html
    git clone https://github.com/okane-max/PHP-alused.git
    cd PHP-alused
    ```
 
-3. **Start services**
+3. **Käivita teenused**
    ```bash
    docker compose up -d
    ```
 
-4. **Access the application**
-   - Main site: `http://your-server-ip`
-   - phpMyAdmin: `http://your-server-ip:8080`
-   - Default DB credentials: User `okane`, Password `okane`
+4. **Ava veebilehed**
+   - Pealeht: `http://sinu-serveri-ip`
+   - phpMyAdmin: `http://sinu-serveri-ip:8080`
+   - Andmebaasi vaikeandmed: Kasutaja `okane`, Parool `okane`
 
-### Option 2: Local Setup (Windows with Docker Desktop)
+### Variant 2: Kohalik seadistus (Windows koos Docker Desktopiga)
 
-1. **Install Docker Desktop** for Windows
+1. **Paigalda Docker Desktop** Windowsi jaoks
 
-2. **Clone and navigate**
+2. **klooni ja liigu kausta**
    ```bash
    git clone https://github.com/okane-max/PHP-alused.git
    cd PHP-alused
    ```
 
-3. **Start with Docker Compose** (PowerShell)
+3. **Käivita Docker Compose abil** (PowerShell)
    ```powershell
    docker compose up -d
    ```
 
-4. **Access locally**
-   - Main site: `http://localhost`
+4. **Ava kohalikult**
+   - Pealeht: `http://localhost`
    - phpMyAdmin: `http://localhost:8080`
 
 ---
 
-## Creating an Admin User
+## Admin-kasutaja loomine
 
-After the database initializes, create an admin account:
+Pärast andmebaasi käivitumist loo administraatori konto:
 
 ```bash
-docker exec -it autorent_web php /var/www/html/create_admin.php username email@example.com password123
+docker exec -it autorent_web php /var/www/html/create_admin.php kasutajanimi email@lahekoht.ee misiganesparoolteidkutsub
 ```
 
-Example:
+Näide:
 ```bash
-docker exec -it autorent_web php /var/www/html/create_admin.php admin admin@autorent.com SecurePass123
+docker exec -it autorent_web php /var/www/html/create_admin.php admin admin@auto.ee SuurjaKuriPar00l
 ```
 
 ---
 
-## Database Schema
+## Andmebaasi struktuur (Schema)
 
 ### `users` table
 - `id`
-- `username` (UNIQUE)
-- `email` (UNIQUE)
-- `password` (hashed)
-- `role` (enum: `client`, `admin`)
+- `username` (unikaalne)
+- `email` (unikaalne)
+- `password` (räsitud)
+- `role` (valikud: `client`, `admin`)
 - `created_at`
 
 ### `cars` table
 - `id`
 - `mark`, `model`, `engine`, `fuel`
-- `price` (daily rental price in €)
+- `price` (rendihind päevakohta eurodes)
 - `year`, `transmission`, `seats`
-- `description`, `image`, `status` (enum: `vaba`, `rendidud`, `hoolduses`)
+- `description`, `image`, `status` (valikud: `vaba`, `rendidud`, `hoolduses`)
 
 ### `reservations` table
 - `id`
-- `user_id` (From → users)
-- `car_id` (From → cars)
+- `user_id` (pärineb → users)
+- `car_id` (pärineb → cars)
 - `start_date`, `end_date`
 - `total_price` (€)
-- `status` (enum: `pending`, `confirmed`, `cancelled`)
+- `status` (valikud: `pending`, `confirmed`, `cancelled`)
 
 ---
 
-## User Guide
+## Kasutusjuhend
 
-### For Clients
+### Klientidele
 
-1. **Browse Cars**: Visit the main page to see available cars
-2. **Filter**: Use the filter form to search by brand, model, fuel type, engine, or max price
-3. **Book a Car**: Click "Rendi" on any car, select start/end dates, and confirm
-4. **Check Status**: View your bookings in "Minu broneeringud" - status shows as "pending" until admin approves
-5. **Wait for Approval**: Admin reviews and confirms your reservation
+1. **Autode sirvimine**: Külasta pealehte, et näha saadaval olevaid autosid.
+2. **Filtreerimine**: Kasuta filtri vormi, et otsida marki, mudelit, kütusetüüpi, mootorit või maksimaalset hinda.
+3. **Auto broneerimine**: Klõpsa soovitud autol nupule "Rendi", vali algus- ja lõpukuupäev ning kinnita.
+4. **Staatuse kontrollimine**: Vaata oma broneeringuid jaotisest "Minu broneeringud" – staatus on "pending" (ootel) kuni administraatori heakskiiduni.
+5. **Heakskiidu ootamine**: Administraator vaatab broneeringu üle ja kinnitab selle.
 
-### For Admins
+### Administraatoritele
 
-1. **Access Admin Panel**: Login as admin and click the admin panel button in the top right
-2. **Manage Cars**:
-   - Click "Lisa auto" to add a new car
-   - Click "Muuda" to edit car details
-   - Click "Kustuta" to remove a car
-3. **Manage Reservations**:
-   - View reservations in three tabs: Pending, Confirmed, Cancelled
-   - Click "Kinnita" to approve pending bookings
-   - Click "Tühista" to cancel any reservation
-4. **View Details**: Each reservation card shows customer info, car details, dates, and total price
+1. **Admini paneeli sisenemine**: Logi sisse administraatorina ja klõpsa üleval paremas nurgas olevat admini paneeli nuppu.
+2. **Autode haldamine**:
+	- Uue auto lisamiseks klõpsa "Lisa auto".
+	- Auto andmete muutmiseks klõpsa "Muuda".
+	- Auto eemaldamiseks klõpsa "Kustuta".
+3. **Broneeringute haldamine**:
+	- Vaata broneeringuid kolmel vahekaardil: Ootel (Pending), Kinnitatud (Confirmed), Tühistatud (Cancelled).
+	- Ootel broneeringute heakskiitmiseks klõpsa "Kinnita".
+	- Mis tahes broneeringu tühistamiseks klõpsa "Tühista".
+4. **Andmete vaatamine**: Iga broneeringukaart näitab kliendi infot, auto andmeid, kuupäevi ja koguhinda.
 
 ---
 
-## Adding More Sample Data
+## Näidisandmete lisamine
 
-Use phpMyAdmin or direct MySQL:
+Kasuta phpMyAdmini või otse MySQL-i:
 
-**Add a user** (password is hashed):
+**Kasutaja lisamine** (parool on räsitud):
 ```sql
 INSERT INTO `users` (`username`, `password`, `email`, `role`) 
 VALUES ('anna_auto', '$2y$10$...', 'anna@auto.ee', 'client');
 ```
 
-**Add a reservation**:
+**Broneeringu lisamine**:
 ```sql
 INSERT INTO `reservations` (`user_id`, `car_id`, `start_date`, `end_date`, `total_price`, `status`) 
 VALUES (2, 9, '2026-10-15', '2026-10-22', 115.50, 'confirmed');
 ```
 
-## Troubleshooting
+## Tõrkeotsing
 
-### "Autot ei leitud" (No cars found)
-- Ensure the database initialized properly: `docker compose logs db`
-- Check if `autorent.sql` was imported: Access phpMyAdmin and verify the `cars` table
+### "Autot ei leitud"
+- Veendu, et andmebaas käivitus korrektselt: `docker compose logs db`
+- Kontrolli, kas fail `autorent.sql` imporditi: Ava phpMyAdmin ja kontrolli tabelit `cars`
 
-### Can't login/register
-- Ensure the `users` table exists and is accessible
-- Check database credentials in `config.php`
+### Sisselogimine/Registreerumine ei tööta
+- Veendu, et tabel `users` on olemas ja ligipääsetav
+- Kontrolli andmebaasi ühenduse andmeid failis `config.php`
 
-### Docker containers not starting
+### Dockeri konteinerid ei käivitu
 ```bash
-docker compose down -v    # Remove containers and volumes
-docker compose up -d      # Restart from scratch
+docker compose down -v
+docker compose up -d
 ```
 
-### Database connection error
+### Andmebaasi ühenduse viga
 ```bash
 docker exec -it autorent_db mysql -u okane -p autorent
-# Then enter password: okane
+# Seejärel sisesta parool: okane
 ```
